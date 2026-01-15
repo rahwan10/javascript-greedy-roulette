@@ -1,0 +1,25 @@
+{
+  "name": "javascript-greedy-roulette",
+  "version": "1.0.0",
+  "description": "그리디 프론트엔드 룰렛 미션",
+  "scripts": {
+    "test": "cypress run --browser chrome"
+  },
+  "keywords": [],
+  "author": "greedy-team",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^15.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greedy-team/javascript-greedy-roulette.git"
+  },
+  "bugs": {
+    "url": "https://github.com/greedy-team/javascript-greedy-roulette/issues"
+  },
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=14.0.0"
+  }
+}

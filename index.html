@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>룰렛 게임</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>🎰 룰렛 게임</h1>
+
+      <div class="info-box">
+        <p>
+          <strong>현재 자금:</strong> <span id="current-money">10000</span>원
+        </p>
+        <p><strong>라운드:</strong> <span id="current-round">0</span></p>
+      </div>
+
+      <div class="color-info">
+        <span class="color-chip yellow">YELLOW x1</span>
+        <span class="color-chip green">GREEN x3</span>
+        <span class="color-chip blue">BLUE x5</span>
+        <span class="color-chip purple">PURPLE x10</span>
+        <span class="color-chip red">RED x20</span>
+      </div>
+
+      <!--룰렛 영역 -->
+      <div class="roulette-container">
+        <div class="roulette-pointer"></div>
+        <canvas id="roulette-canvas" width="300" height="300"></canvas>
+      </div>
+
+      <div id="game-controls">
+        <div class="input-group">
+          <label for="color-select">베팅할 색상</label>
+          <select id="color-select">
+            <option value="">색상을 선택하세요</option>
+            <option value="YELLOW">YELLOW (x1 배당)</option>
+            <option value="GREEN">GREEN (x3 배당)</option>
+            <option value="BLUE">BLUE (x5 배당)</option>
+            <option value="PURPLE">PURPLE (x10 배당)</option>
+            <option value="RED">RED (x20 배당)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="bet-amount">베팅 금액</label>
+          <input
+            type="number"
+            id="bet-amount"
+            placeholder="베팅 금액을 입력하세요"
+            min="1"
+          />
+        </div>
+
+        <div id="error-msg"></div>
+
+        <div class="button-group">
+          <button id="bet-button">베팅하기</button>
+          <button id="stop-button">게임 중단</button>
+        </div>
+      </div>
+
+      <div id="result-box">
+        <div id="result-content"></div>
+      </div>
+
+      <button id="restart-button">다시 시작하기</button>
+    </div>
+
+    <script type="module" src="src/index.js"></script>
+  </body>
+</html>
