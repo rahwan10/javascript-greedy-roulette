@@ -6,7 +6,7 @@
     "test": "cypress run --browser chrome"
   },
   "keywords": [],
-  "author": "Greedy",
+  "author": "greedy-team",
   "license": "MIT",
   "devDependencies": {
     "cypress": "^15.9.0"
@@ -17,5 +17,9 @@
   },
   "bugs": {
     "url": "https://github.com/greedy-team/javascript-greedy-roulette/issues"
+  },
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=14.0.0"
   }
 }

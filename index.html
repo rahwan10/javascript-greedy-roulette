@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>룰렛 게임</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
@@ -17,10 +18,17 @@
       </div>
 
       <div class="color-info">
-        <span class="color-chip blue">BLUE x2</span>
-        <span class="color-chip red">RED x3</span>
-        <span class="color-chip green">GREEN x5</span>
-        <span class="color-chip gold">GOLD x10</span>
+        <span class="color-chip blue">YELLOW x1</span>
+        <span class="color-chip red">GREEN x3</span>
+        <span class="color-chip green">BLUE x5</span>
+        <span class="color-chip gold">PURPLE x10</span>
+        <span class="color-chip gold">RED x20</span>
+      </div>
+
+      <!--룰렛 영역 -->
+      <div class="roulette-container">
+        <div class="roulette-pointer"></div>
+        <canvas id="roulette-canvas" width="300" height="300"></canvas>
       </div>
 
       <div id="game-controls">
@@ -28,10 +36,11 @@
           <label for="color-select">베팅할 색상</label>
           <select id="color-select">
             <option value="">색상을 선택하세요</option>
-            <option value="BLUE">BLUE (x2 배당)</option>
-            <option value="RED">RED (x3 배당)</option>
-            <option value="GREEN">GREEN (x5 배당)</option>
-            <option value="GOLD">GOLD (x10 배당)</option>
+            <option value="YELLOW">YELLOW (x1 배당)</option>
+            <option value="GREEN">GREEN (x3 배당)</option>
+            <option value="BLUE">BLUE (x5 배당)</option>
+            <option value="PURPLE">PURPLE (x10 배당)</option>
+            <option value="RED">RED (x20 배당)</option>
           </select>
         </div>
 
