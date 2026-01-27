@@ -88,7 +88,7 @@ describe("재시작 테스트", () => {
       cy.get("#bet-button").click();
 
       cy.get("#current-money").should("have.text", "8,000");
-      cy.get(".spinning").should("contain", "룰렛을 돌리는 중...");
+      cy.get("#result-content").should("contain", "룰렛을 돌리는 중...");
     });
   });
 });

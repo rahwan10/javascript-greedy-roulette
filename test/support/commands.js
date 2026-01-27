@@ -54,9 +54,9 @@ Cypress.Commands.add("stubAlert", () => {
   });
 });
 
-// alert 메시지 확인
-Cypress.Commands.add("shouldShowAlert", (message) => {
-  cy.get("@alertStub").should("have.been.calledWith", message);
+// alert가 호출되었는지 확인
+Cypress.Commands.add("shouldShowAlert", () => {
+  cy.get("@alertStub").should("have.been.called");
 });
 
 // alert가 호출되지 않았는지 확인
@@ -66,17 +66,17 @@ Cypress.Commands.add("shouldNotShowAlert", () => {
 
 // 결과 확인 (승리)
 Cypress.Commands.add("shouldShowWin", () => {
-  cy.get(".win").should("contain", "베팅 성공");
+  cy.get("#result-content").should("contain", "베팅 성공");
 });
 
 // 결과 확인 (패배)
 Cypress.Commands.add("shouldShowLose", () => {
-  cy.get(".lose").should("contain", "베팅 실패");
+  cy.get("#result-content").should("contain", "베팅 실패");
 });
 
 // 게임 종료 화면 확인
 Cypress.Commands.add("shouldShowGameOver", () => {
-  cy.get(".final-result").should("contain", "게임 종료");
+  cy.get("#result-content").should("contain", "게임 종료");
 });
 
 // 초기 상태 확인

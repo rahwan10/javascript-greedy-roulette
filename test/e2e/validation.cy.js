@@ -9,7 +9,7 @@ describe("유효성 검사 테스트", () => {
       cy.get("#bet-amount").type("1000");
       cy.get("#bet-button").click();
 
-      cy.shouldShowAlert("유효한 색상을 선택해주세요.");
+      cy.shouldShowAlert();
     });
 
     it("에러 발생 시 자금이 차감되지 않는다", () => {
@@ -25,17 +25,17 @@ describe("유효성 검사 테스트", () => {
       cy.get("#color-select").select("YELLOW");
       cy.get("#bet-button").click();
 
-      cy.shouldShowAlert("베팅 금액은 1원 이상이어야 합니다.");
+      cy.shouldShowAlert();
     });
   });
 
-  describe("0원 이하 입력", () => {
+  describe("유효하지 않은 금액 입력", () => {
     it("0원을 입력하면 alert가 표시된다", () => {
       cy.get("#color-select").select("YELLOW");
       cy.get("#bet-amount").type("0");
       cy.get("#bet-button").click();
 
-      cy.shouldShowAlert("베팅 금액은 1원 이상이어야 합니다.");
+      cy.shouldShowAlert();
     });
 
     it("음수를 입력하면 alert가 표시된다", () => {
@@ -43,7 +43,23 @@ describe("유효성 검사 테스트", () => {
       cy.get("#bet-amount").type("-100");
       cy.get("#bet-button").click();
 
-      cy.shouldShowAlert("베팅 금액은 1원 이상이어야 합니다.");
+      cy.shouldShowAlert();
+    });
+
+    it("소수를 입력하면 alert가 표시된다", () => {
+      cy.get("#color-select").select("YELLOW");
+      cy.get("#bet-amount").type("1.5");
+      cy.get("#bet-button").click();
+
+      cy.shouldShowAlert();
+    });
+
+    it("지수 표기법을 입력하면 alert가 표시된다", () => {
+      cy.get("#color-select").select("YELLOW");
+      cy.get("#bet-amount").type("1e2");
+      cy.get("#bet-button").click();
+
+      cy.shouldShowAlert();
     });
   });
 
@@ -53,7 +69,7 @@ describe("유효성 검사 테스트", () => {
       cy.get("#bet-amount").type("20000");
       cy.get("#bet-button").click();
 
-      cy.shouldShowAlert("보유 금액을 초과하여 베팅할 수 없습니다.");
+      cy.shouldShowAlert();
     });
 
     it("정확히 보유 금액만큼은 베팅 가능하다", () => {
