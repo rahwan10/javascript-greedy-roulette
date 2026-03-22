@@ -13,12 +13,16 @@ function PlayBetting(){
     console.log(BettingMoney);
     console.log(UserColor);
     console.log(RouletteColor);
+
     UserAccount-=BettingMoney;
+    CurrentRound++;
     if(UserColor===RouletteColor){
         UserAccount+=SuccessBetting(UserColor,BettingMoney);
     }else{
         FailBetting(BettingMoney);
     }
+    document.getElementById("current-money").innerHTML=`${UserAccount}`;
+    document.getElementById("current-round").innerHTML=`${CurrentRound}`;
     
 }
 
