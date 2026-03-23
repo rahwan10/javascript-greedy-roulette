@@ -9,10 +9,10 @@ function PlayBetting() {
     const UserColor = document.getElementById("color-select").value;
     const RouletteColor = GetRouletteColor();
     const BettingMoney = document.getElementById("bet-amount").value;
-    console.log(BettingMoney);
-    console.log(UserColor);
-    console.log(RouletteColor);
-
+    if (!isInputPossible(BettingMoney)) {
+        alert("자금보다 작고 0보다 크게 설정해주세요!");
+        return null;
+    }
     UserAccount -= BettingMoney;
     CurrentRound++;
     document.getElementById("current-money").innerHTML = `${UserAccount}`;
@@ -25,11 +25,15 @@ function PlayBetting() {
         }
         document.getElementById("current-money").innerHTML = `${UserAccount}`;
         document.getElementById("current-round").innerHTML = `${CurrentRound}`;
+        document.getElementById("bet-amount").value = null;
         if (UserAccount <= 0) {
             StopPlayBetting();
+        } else {
+            BetBtn.disabled = false;
+            StopBtn.disabled = false;
+
         }
-        BetBtn.disabled = false;
-        StopBtn.disabled = false;
+
     }), 2000)
 
 
@@ -78,12 +82,15 @@ function FailBetting(BettingMoney) {
 }
 function StopPlayBetting() {
     const ResultBox = document.getElementById("result-content");
+    BetBtn.disabled = true;
+    StopBtn.disabled = true;
     ResultBox.innerHTML = "게임이 곧 종료됩니다.";
     setTimeout((function () {
         ResultBox.innerHTML = "게임종료" + `<br>` + " 최종자금:" + UserAccount + "원 " + `<br>` + "플레이한라운드:" + CurrentRound;
-        BetBtn.style.display = 'none'; 
+        BetBtn.style.display = 'none';
         StopBtn.style.display = 'none';
-        RestartBtn.style.display='block';
+        RestartBtn.style.display = 'block';
+        document.getElementById("game-controls").style.display = "none";
     }), 2000);
 
 }
@@ -93,11 +100,34 @@ function WaitingForResult() {
     const ResultBox = document.getElementById("result-content");
     BetBtn.disabled = true;
     StopBtn.disabled = true;
-    ResultBox.innerHTML = "룰렛을 돌리는중";
+    ResultBox.innerHTML = "룰렛을 돌리는중...";
+}
+function RestartBetting() {
+    const ResultBox = document.getElementById("result-content");
+    BetBtn.disabled = false;
+    StopBtn.disabled = false;
+    BetBtn.style.display = 'block';
+    StopBtn.style.display = 'block';
+    RestartBtn.style.display = 'none';
+    document.getElementById("game-controls").style.display = "block";
+    ResultBox.innerHTML = "";
+    CurrentRound = 0;
+    UserAccount = 10000;
+    document.getElementById("current-money").innerHTML = UserAccount;
+    document.getElementById("current-round").innerHTML = CurrentRound;
+    document.getElementById("bet-amount").value = null;
+}
+function isInputPossible(BettingMoney) {
+    if (BettingMoney <= 0 || BettingMoney > UserAccount) {
+        return false;
+    }
+    return true;
+
 }
 
 
 
 BetBtn.onclick = PlayBetting;
 StopBtn.onclick = StopPlayBetting;
+RestartBtn.onclick = RestartBetting;
 
