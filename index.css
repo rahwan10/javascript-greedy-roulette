@@ -1,0 +1,21 @@
+#restart-button{ 
+    display:none;
+    
+}
+h1{
+    text-align: center;
+}
+.color-info{
+    text-align:center;
+}
+
+.color-chip {
+    display:inline-block;
+    border: 1px solid none;
+    border-radius: 30%;
+    background-color: yellow;
+}
+.button-group{
+    align-items:center;
+      
+}
