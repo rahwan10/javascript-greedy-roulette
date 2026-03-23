@@ -19,9 +19,9 @@ function PlayBetting() {
     WaitingForResult();
     setTimeout((function () {
         if (UserColor === RouletteColor) {
-            UserAccount += SuccessBetting(UserColor, BettingMoney);
+            UserAccount += SuccessBetting(RouletteColor,UserColor, BettingMoney);
         } else {
-            FailBetting(BettingMoney);
+            FailBetting(RouletteColor,BettingMoney);
         }
         document.getElementById("current-money").innerHTML = `${UserAccount}`;
         document.getElementById("current-round").innerHTML = `${CurrentRound}`;
@@ -70,15 +70,15 @@ function CalculateBonusMoney(UserColor, BettingMoney) {
     }
     return BettingMoney * BonusRate;
 }
-function SuccessBetting(UserColor, BettingMoney) {
+function SuccessBetting(RouletteColor,UserColor, BettingMoney) {
     const BonusMoney = CalculateBonusMoney(UserColor, BettingMoney);
     const ResultBox = document.getElementById("result-content");
-    ResultBox.innerHTML = "베팅 성공! +" + BonusMoney + "원";
+    ResultBox.innerHTML = `룰렛결과${RouletteColor}<br>베팅 성공! +${BonusMoney}원`;
     return BonusMoney;
 }
-function FailBetting(BettingMoney) {
+function FailBetting(RouletteColor,BettingMoney) {
     const ResultBox = document.getElementById("result-content");
-    ResultBox.innerHTML = "베팅 실패! -" + BettingMoney + "원";
+    ResultBox.innerHTML = `룰렛결과${RouletteColor}<br>베팅 실패! -${BettingMoney}원`;
 }
 function StopPlayBetting() {
     const ResultBox = document.getElementById("result-content");
