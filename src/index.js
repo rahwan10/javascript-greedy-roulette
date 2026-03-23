@@ -1,3 +1,5 @@
+import getRouletteColor from "./models/getRouletteColor.js";
+import calculateBonusMoney from "./models/calculateBonusMoney.js";
 let UserAccount = 10000;
 let CurrentRound = 0;
 
@@ -5,9 +7,9 @@ const BetBtn = document.getElementById("bet-button");
 const StopBtn = document.getElementById("stop-button");
 const RestartBtn = document.getElementById("restart-button");
 
-function PlayBetting() {
+function playBetting() {
     const UserColor = document.getElementById("color-select").value;
-    const RouletteColor = GetRouletteColor();
+    const RouletteColor = getRouletteColor();
     const BettingMoney = document.getElementById("bet-amount").value;
     if (!isInputPossible(BettingMoney)) {
         alert("자금보다 작고 0보다 크게 설정해주세요!");
@@ -16,18 +18,18 @@ function PlayBetting() {
     UserAccount -= BettingMoney;
     CurrentRound++;
     document.getElementById("current-money").innerHTML = `${UserAccount}`;
-    WaitingForResult();
+    waitingForResult();
     setTimeout((function () {
         if (UserColor === RouletteColor) {
-            UserAccount += SuccessBetting(RouletteColor,UserColor, BettingMoney);
+            UserAccount += successBetting(RouletteColor,UserColor, BettingMoney);
         } else {
-            FailBetting(RouletteColor,BettingMoney);
+            failBetting(RouletteColor,BettingMoney);
         }
         document.getElementById("current-money").innerHTML = `${UserAccount}`;
         document.getElementById("current-round").innerHTML = `${CurrentRound}`;
         document.getElementById("bet-amount").value = null;
         if (UserAccount <= 0) {
-            StopPlayBetting();
+            stopPlayBetting();
         } else {
             BetBtn.disabled = false;
             StopBtn.disabled = false;
@@ -39,48 +41,48 @@ function PlayBetting() {
 
 }
 
-function GetRouletteColor() {
-    const ColorNum = Math.floor(Math.random() * 40) + 1;
-    let Color;
-    if (ColorNum <= 21) {
-        Color = "YELLOW";
-    } else if (ColorNum <= 31) {
-        Color = "GREEN";
-    } else if (ColorNum <= 37) {
-        Color = "BLUE";
-    } else if (ColorNum <= 39) {
-        Color = "PURPLE";
-    } else {
-        Color = "RED";
-    }
-    return Color;
-}
-function CalculateBonusMoney(UserColor, BettingMoney) {
-    let BonusRate = 0;
-    if (UserColor === "YELLOW") {
-        BonusRate = 2;
-    } else if (UserColor === "GREEN") {
-        BonusRate = 4;
-    } else if (UserColor === "BLUE") {
-        BonusRate = 6;
-    } else if (UserColor === "PURPLE") {
-        BonusRate = 11;
-    } else if (UserColor === "RED") {
-        BonusRate = 21;
-    }
-    return BettingMoney * BonusRate;
-}
-function SuccessBetting(RouletteColor,UserColor, BettingMoney) {
-    const BonusMoney = CalculateBonusMoney(UserColor, BettingMoney);
+// function getRouletteColor() {
+//     const ColorNum = Math.floor(Math.random() * 40) + 1;
+//     let Color;
+//     if (ColorNum <= 21) {
+//         Color = "YELLOW";
+//     } else if (ColorNum <= 31) {
+//         Color = "GREEN";
+//     } else if (ColorNum <= 37) {
+//         Color = "BLUE";
+//     } else if (ColorNum <= 39) {
+//         Color = "PURPLE";
+//     } else {
+//         Color = "RED";
+//     }
+//     return Color;
+// }
+// function calculateBonusMoney(UserColor, BettingMoney) {
+//     let BonusRate = 0;
+//     if (UserColor === "YELLOW") {
+//         BonusRate = 2;
+//     } else if (UserColor === "GREEN") {
+//         BonusRate = 4;
+//     } else if (UserColor === "BLUE") {
+//         BonusRate = 6;
+//     } else if (UserColor === "PURPLE") {
+//         BonusRate = 11;
+//     } else if (UserColor === "RED") {
+//         BonusRate = 21;
+//     }
+//     return BettingMoney * BonusRate;
+// }
+function successBetting(RouletteColor,UserColor, BettingMoney) {
+    const BonusMoney = calculateBonusMoney(UserColor, BettingMoney);
     const ResultBox = document.getElementById("result-content");
-    ResultBox.innerHTML = `룰렛결과${RouletteColor}<br>베팅 성공! +${BonusMoney}원`;
+    ResultBox.innerHTML = `룰렛결과:${RouletteColor}<br>베팅 성공! +${BonusMoney}원`;
     return BonusMoney;
 }
-function FailBetting(RouletteColor,BettingMoney) {
+function failBetting(RouletteColor,BettingMoney) {
     const ResultBox = document.getElementById("result-content");
-    ResultBox.innerHTML = `룰렛결과${RouletteColor}<br>베팅 실패! -${BettingMoney}원`;
+    ResultBox.innerHTML = `룰렛결과: ${RouletteColor}<br>베팅 실패! -${BettingMoney}원`;
 }
-function StopPlayBetting() {
+function stopPlayBetting() {
     const ResultBox = document.getElementById("result-content");
     BetBtn.disabled = true;
     StopBtn.disabled = true;
@@ -94,7 +96,7 @@ function StopPlayBetting() {
     }), 2000);
 
 }
-function WaitingForResult() {
+function waitingForResult() {
     const BetBtn = document.getElementById("bet-button");
     const StopBtn = document.getElementById("stop-button");
     const ResultBox = document.getElementById("result-content");
@@ -102,7 +104,7 @@ function WaitingForResult() {
     StopBtn.disabled = true;
     ResultBox.innerHTML = "룰렛을 돌리는중...";
 }
-function RestartBetting() {
+function restartBetting() {
     const ResultBox = document.getElementById("result-content");
     BetBtn.disabled = false;
     StopBtn.disabled = false;
@@ -127,7 +129,7 @@ function isInputPossible(BettingMoney) {
 
 
 
-BetBtn.onclick = PlayBetting;
-StopBtn.onclick = StopPlayBetting;
-RestartBtn.onclick = RestartBetting;
+BetBtn.onclick = playBetting;
+StopBtn.onclick = stopPlayBetting;
+RestartBtn.onclick = restartBetting;
 
