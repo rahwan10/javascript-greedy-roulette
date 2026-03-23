@@ -79,14 +79,11 @@ function FailBetting(BettingMoney) {
 function StopPlayBetting() {
     const ResultBox = document.getElementById("result-content");
     ResultBox.innerHTML = "게임이 곧 종료됩니다.";
-
     setTimeout((function () {
         ResultBox.innerHTML = "게임종료" + `<br>` + " 최종자금:" + UserAccount + "원 " + `<br>` + "플레이한라운드:" + CurrentRound;
-        BetBtn.disabled = true; 
-        StopBtn.disabled = true;
-        RestartBtn.disabled=false;
-        
-
+        BetBtn.style.display = 'none'; 
+        StopBtn.style.display = 'none';
+        RestartBtn.style.display='block';
     }), 2000);
 
 }
@@ -99,20 +96,7 @@ function WaitingForResult() {
     ResultBox.innerHTML = "룰렛을 돌리는중";
 }
 
-// function ShowResult() {
-//     if (UserColor === RouletteColor) {
-//         UserAccount += SuccessBetting(UserColor, BettingMoney);
-//     } else {
-//         FailBetting(BettingMoney);
-//     }
-//     document.getElementById("current-money").innerHTML = `${UserAccount}`;
-//     document.getElementById("current-round").innerHTML = `${CurrentRound}`;
-//     if (UserAccount <= 0) {
-//         StopPlayBetting();
-//     }
-//     BetBtn.disabled = false;
-//     StopBtn.disabled = false;
-// }
+
 
 BetBtn.onclick = PlayBetting;
 StopBtn.onclick = StopPlayBetting;
