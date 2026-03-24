@@ -4,7 +4,7 @@ import failBetting from "./views/failBetting.js";
 import stopPlayBetting from "./views/stopPlayBetting.js";
 import waitingForResult from "./views/waitingForResult.js";
 import restartBetting from "./views/restartBetting.js";
-import alertUser from "./models/alertUser.js";
+import alertUser from "./views/alertUser.js";
 
 let UserAccount = 10000;
 let CurrentRound = 0;
