@@ -45,7 +45,9 @@ describe("베팅 흐름 테스트", () => {
     });
 
     it("결과 색상이 표시된다", () => {
-      cy.get("#result-content").should("match", /YELLOW|GREEN|BLUE|PURPLE|RED/);
+      cy.get("#result-content")
+        .invoke("text")
+        .should("match", /YELLOW|GREEN|BLUE|PURPLE|RED/);
     });
 
     it("베팅 버튼이 다시 활성화된다", () => {
