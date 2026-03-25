@@ -31,5 +31,4 @@ function isInt(BettingMoney) {
         return false;
     }
     return true;
-
 }

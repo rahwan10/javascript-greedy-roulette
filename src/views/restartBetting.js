@@ -14,9 +14,8 @@ function restartBetting(UserAccount,CurrentRound) {
     RestartBtn.style.display = 'none';
     document.getElementById("game-controls").style.display = "block";
     ResultBox.innerHTML = "";
-    CurrentRound = 0;
-    UserAccount = 10000;
     document.getElementById("current-money").innerHTML = Number(UserAccount).toLocaleString();
     document.getElementById("current-round").innerHTML = CurrentRound;
     document.getElementById("bet-amount").value = null;
+    
 }

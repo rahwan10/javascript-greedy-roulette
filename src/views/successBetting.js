@@ -1,4 +1,4 @@
-export default successBetting
+
 import calculateBonusMoney from "../models/calculateBonusMoney.js"
 function successBetting(RouletteColor,UserColor, BettingMoney) {
     const BonusMoney = calculateBonusMoney(UserColor, BettingMoney);
@@ -7,3 +7,4 @@ function successBetting(RouletteColor,UserColor, BettingMoney) {
     
     return BonusMoney;
 }
+export default successBetting
