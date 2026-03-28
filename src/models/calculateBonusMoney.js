@@ -1,6 +1,4 @@
-export default calculateBonusMoney
-
-function calculateBonusMoney(UserColor, BettingMoney) {
+export default function calculateBonusMoney(UserColor, BettingMoney) {
     let BonusRate = 0;
     if (UserColor === "YELLOW") {
         BonusRate = 2;

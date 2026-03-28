@@ -1,6 +1,4 @@
-export default getValidationError
-
-function getValidationError(BettingMoney,UserColor,UserAccount){
+export default function getValidationError(BettingMoney,UserColor,UserAccount){
     if(!isNotInputNothing(BettingMoney)){
         //alert("금액을 입력해주세요!");
         return "금액을 입력해주세요!";

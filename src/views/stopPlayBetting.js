@@ -1,5 +1,4 @@
-export default stopPlayBetting
-function stopPlayBetting(UserAccount,CurrentRound) {
+export default function stopPlayBetting(UserAccount,CurrentRound) {
     const BetBtn = document.getElementById("bet-button");
     const StopBtn = document.getElementById("stop-button");
     const RestartBtn = document.getElementById("restart-button");

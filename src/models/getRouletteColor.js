@@ -1,6 +1,4 @@
-export default getRouletteColor
-
-function getRouletteColor() {
+export default function getRouletteColor() {
     const ColorNum = Math.floor(Math.random() * 40) + 1;
     let Color;
     if (ColorNum <= 21) {

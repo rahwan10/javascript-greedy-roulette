@@ -1,6 +1,4 @@
-export default restartBetting
-
-function restartBetting(UserAccount,CurrentRound) {
+export default function restartBetting(UserAccount,CurrentRound) {
     const ResultBox = document.getElementById("result-content");
     const ColorSelect = document.getElementById("color-select");
     const BetBtn = document.getElementById("bet-button");
