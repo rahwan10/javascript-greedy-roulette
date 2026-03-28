@@ -10,9 +10,9 @@ import ifNotAccountZero from "../views/enableBettingButtons.js";
 let UserAccount = 10000;
 let CurrentRound = 0;
 
-const BetBtn = document.getElementById("bet-button");
-const StopBtn = document.getElementById("stop-button");
-const RestartBtn = document.getElementById("restart-button");
+const betBtn = document.getElementById("bet-button");
+const stopBtn = document.getElementById("stop-button");
+const restartBtn = document.getElementById("restart-button");
 
 function playBetting() {
     const UserColor = document.getElementById("color-select").value;
@@ -45,11 +45,11 @@ function BettingProcess(UserColor,RouletteColor,BettingMoney,UserAccount,Current
     return UserAccount;
 }
 
-BetBtn.onclick = playBetting;
-StopBtn.onclick = () => {
+betBtn.onclick = playBetting;
+stopBtn.onclick = () => {
     stopPlayBetting(UserAccount, CurrentRound);
 }
-RestartBtn.onclick = () => {
+restartBtn.onclick = () => {
     CurrentRound=0;
     UserAccount=10000;
     restartBetting(UserAccount, CurrentRound);
