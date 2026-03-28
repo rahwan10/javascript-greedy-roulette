@@ -1,6 +1,6 @@
-export default hasValidationError
+export default getValidationError
 
-function hasValidationError(BettingMoney,UserColor,UserAccount){
+function getValidationError(BettingMoney,UserColor,UserAccount){
     console.log("베팅머니:",BettingMoney);
     if(!isNotInputNothing(BettingMoney)){
         //alert("금액을 입력해주세요!");
@@ -26,7 +26,7 @@ function hasValidationError(BettingMoney,UserColor,UserAccount){
 }
 
 function isInputPossible(BettingMoney,UserAccount) {
-    if (BettingMoney < 0 || BettingMoney > UserAccount) {
+    if (BettingMoney <= 0 || BettingMoney > UserAccount) {
         return false;
     }
     return true;

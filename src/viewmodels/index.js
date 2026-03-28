@@ -4,7 +4,7 @@ import failBetting from "../views/failBetting.js";
 import stopPlayBetting from "../views/stopPlayBetting.js";
 import waitingForResult from "../views/waitingForResult.js";
 import restartBetting from "../views/restartBetting.js";
-import hasValidationError from "../views/hasValidationError.js";
+import getValidationError from "../views/hasValidationError.js";
 import ifAccountZero from "../views/ifAccountZero.js";
 import updateStatus from "../views/updateStatus.js";
 import ifNotAccountZero from "../views/ifNotAccountZero.js";
@@ -19,7 +19,7 @@ function playBetting() {
     const UserColor = document.getElementById("color-select").value;
     const RouletteColor = getRouletteColor();
     const BettingMoney = document.getElementById("bet-amount").value;
-    const error=hasValidationError(BettingMoney, UserColor, UserAccount);
+    const error=getValidationError(BettingMoney, UserColor, UserAccount);
 
     if (error) {
         alert(error)
