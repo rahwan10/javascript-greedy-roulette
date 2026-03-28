@@ -1,13 +1,12 @@
 import getRouletteColor from "../models/getRouletteColor.js"
 import successBetting from "../views/successBetting.js";
-import failBetting from "../views/failBetting.js";
+import showFailBetting from "../views/showFailBetting.js";
 import stopPlayBetting from "../views/stopPlayBetting.js";
 import waitingForResult from "../views/waitingForResult.js";
 import restartBetting from "../views/restartBetting.js";
 import getValidationError from "../views/getValidationError.js";
-import ifAccountZero from "../views/ifAccountZero.js";
 import updateStatus from "../views/updateStatus.js";
-import ifNotAccountZero from "../views/ifNotAccountZero.js";
+import ifNotAccountZero from "../views/enableBettingButtons.js";
 let UserAccount = 10000;
 let CurrentRound = 0;
 
@@ -34,11 +33,11 @@ function BettingProcess(UserColor,RouletteColor,BettingMoney,UserAccount,Current
     if (UserColor === RouletteColor) {
         UserAccount += successBetting(RouletteColor, UserColor, BettingMoney);
     } else {
-        failBetting(RouletteColor, BettingMoney);
+        showFailBetting(RouletteColor, BettingMoney);
     }
     updateStatus(UserAccount,CurrentRound);
     if (UserAccount <= 0) {
-        ifAccountZero(RouletteColor,BettingMoney);
+        showFailBetting(RouletteColor, BettingMoney);
         stopPlayBetting(UserAccount, CurrentRound);
     } else {
         ifNotAccountZero();
