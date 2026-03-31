@@ -77,10 +77,9 @@ describe("게임 종료 테스트", () => {
         const money = parseInt($money.text().replace(/,/g, ""), 10);
         if (money === 0) {
           cy.get("#result-content").should("contain", "룰렛 결과:");
-          cy.get("#result-content").should(
-            "match",
-            /YELLOW|GREEN|BLUE|PURPLE|RED/,
-          );
+          cy.get("#result-content")
+            .invoke("text")
+            .should("match", /YELLOW|GREEN|BLUE|PURPLE|RED/);
         }
       });
     });

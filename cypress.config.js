@@ -19,18 +19,7 @@ module.exports = defineConfig({
     video: false,
 
     // 스크린샷 설정
-    screenshotOnRunFailure: true,
-    screenshotsFolder: "test/screenshots",
-
-    // 재시도 설정
-    retries: {
-      runMode: 2, // cypress run 시 재시도 횟수
-      openMode: 0, // cypress open 시 재시도 횟수
-    },
-
-    // 타임아웃 설정
-    defaultCommandTimeout: 10000,
-    pageLoadTimeout: 30000,
+    screenshotOnRunFailure: false,
 
     // 실험적 기능
     experimentalRunAllSpecs: true,
